@@ -9,7 +9,19 @@ root.geometry('700x700')
 textarea=Text(root)
 textarea.pack(expand=True,fill=BOTH)
 
+# scroll bar
+scrollbar = Scrollbar(textarea)
+scrollbar.pack(side=RIGHT, fill=Y)
+scrollbar.config(command=textarea.yview)
+textarea.config(yscrollcommand=scrollbar.set)
 
+
+def newfile():
+    pass
+def openfile():
+    pass
+def savefile():
+    pass
 
 def cut():
     textarea.event_generate(("<<Cut>>"))
