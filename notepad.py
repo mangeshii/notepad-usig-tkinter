@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import *
-
+from tkinter.filedialog import askopenfilename,asksaveasfilename
+import os
 
 root=tk.Tk()
-root.title('notepad')
+root.title('Untitled-Notepad')
 root.geometry('700x700')
+file=None
 
 textarea=Text(root)
 textarea.pack(expand=True,fill=BOTH)
@@ -17,9 +19,13 @@ textarea.config(yscrollcommand=scrollbar.set)
 
 
 def newfile():
-    pass
+    root.title('Untitled-Notepad')
+    file=None
+    textarea.delete(1.0,END)
+
 def openfile():
     pass
+
 def savefile():
     pass
 
