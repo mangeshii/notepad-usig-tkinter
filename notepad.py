@@ -19,12 +19,14 @@ textarea.config(yscrollcommand=scrollbar.set)
 
 
 def newfile():
+    global file
     root.title('Untitled-Notepad')
     file=None
     textarea.delete(1.0,END)
 
 def openfile():
-    file = askopenfilename(filetypes=[
+    global file
+    file = askopenfilename(defaultextension="*.txt" , filetypes=[
                              ("All files", "*.*"), ("Text Documents ", "*.txt"),("Python files","*.py")])
 
     if file =="":
@@ -37,7 +39,22 @@ def openfile():
         f.close()
 
 def savefile():
-    pass    
+    global file
+    if file == None:
+        file = asksaveasfilename(initialfile="Untitled.txt",defaultextension="*.txt", filetypes=[
+                             ("All files", "*.*"), ("Text Documents ", "*.txt"), ("Python files", "*.py")])
+        if file=="":
+            file=None
+        else:
+            root.title(os.path.basename(file) + "- Notepad")
+            f=open(file,"w")
+            f.write(textarea.get(1.0,END))
+            f.close()
+    else:
+        f = open(file, "w")
+        f.write(textarea.get(1.0, END))
+        f.close()
+
 
 def cut():
     textarea.event_generate(("<<Cut>>"))
