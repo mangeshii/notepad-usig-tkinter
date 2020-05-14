@@ -24,10 +24,20 @@ def newfile():
     textarea.delete(1.0,END)
 
 def openfile():
-    pass
+    file = askopenfilename(filetypes=[
+                             ("All files", "*.*"), ("Text Documents ", "*.txt"),("Python files","*.py")])
+
+    if file =="":
+        file=None
+    else:
+        root.title(os.path.basename(file) + "- Notepad")
+        textarea.delete(1.0,END)
+        f=open(file,"r")
+        textarea.insert(1.0,f.read())
+        f.close()
 
 def savefile():
-    pass
+    pass    
 
 def cut():
     textarea.event_generate(("<<Cut>>"))
