@@ -71,7 +71,7 @@ def cut():
 def copy():
     textarea.event_generate(("<<Copy>>"))
 
-
+  
 def paste():
     textarea.event_generate(("<<Paste>>"))
 
